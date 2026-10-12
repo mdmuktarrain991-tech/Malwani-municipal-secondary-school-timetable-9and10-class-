@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -10,22 +9,13 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                        }
                     }
                 }
             }
@@ -56,20 +46,20 @@
 </head>
 <body class="bg-slate-100 text-slate-800 h-full flex flex-col font-sans select-none overflow-x-hidden">
 
-    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg sticky top-0 z-50">
+    <header class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xl font-bold border border-white/20">
+                <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-xl font-bold border border-white/20 shadow-inner">
                     <i class="fa-solid fa-graduation-cap text-amber-300"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-base leading-tight">Class 9 Maharashtra Board</h1>
-                    <p class="text-xs text-blue-200">Timetable & Study Companion</p>
+                    <h1 class="font-bold text-base leading-tight">Class 9 MH Board</h1>
+                    <p class="text-[11px] text-blue-200">Timetable & Daily Companion</p>
                 </div>
             </div>
-            <button onclick="openPublishGuide()" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition border border-white/20 flex items-center space-x-1.5">
-                <i class="fa-solid fa-rocket"></i>
-                <span>Publish APK</span>
+            <button onclick="openPublishGuide()" class="bg-white/15 hover:bg-white/25 active:scale-95 text-white px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 border border-white/20 shadow-sm">
+                <i class="fa-solid fa-mobile-screen-button text-amber-300"></i>
+                <span>Get APK</span>
             </button>
         </div>
     </header>
@@ -78,22 +68,22 @@
 
         <!-- TAB 1: TIMETABLE -->
         <div id="tab-timetable" class="tab-content active space-y-4">
-            <!-- School Timing Banner -->
-            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
-                <div class="absolute -right-6 -bottom-6 opacity-10 text-8xl">
+            <!-- School Timing Card -->
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-10 text-8xl">
                     <i class="fa-solid fa-school"></i>
                 </div>
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-white/20 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">School Hours</span>
-                    <span class="text-xs text-blue-100"><i class="fa-regular fa-clock mr-1"></i>7:00 AM - 12:30 PM</span>
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="bg-white/20 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">School Hours</span>
+                    <span class="text-xs text-blue-100 font-medium"><i class="fa-regular fa-clock mr-1"></i>7:00 AM - 12:30 PM</span>
                 </div>
-                <h2 class="text-lg font-bold">Maharashtra State Board</h2>
-                <p class="text-xs text-blue-100 mt-0.5">Monday to Saturday Regular Schedule</p>
+                <h2 class="text-lg font-extrabold">Maharashtra State Board</h2>
+                <p class="text-xs text-blue-100 mt-0.5">Monday to Saturday Regular Periods & Recess</p>
             </div>
 
             <!-- Day Selector Horizontal Scroll -->
-            <div class="flex space-x-2 overflow-x-auto pb-2 scrollbar-none" id="day-selector">
-                <!-- Populated via JavaScript -->
+            <div class="flex space-x-2 overflow-x-auto pb-1 scrollbar-none" id="day-selector">
+                <!-- Populated via JS -->
             </div>
 
             <!-- Timetable List Container -->
@@ -103,12 +93,12 @@
                         <i class="fa-solid fa-calendar-day text-blue-600 mr-2"></i>
                         <span id="current-selected-day-label">Monday</span> Schedule
                     </h3>
-                    <button onclick="openEditTimetableModal()" class="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center bg-blue-50 px-2.5 py-1 rounded-lg">
+                    <button onclick="openEditTimetableModal()" class="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-lg transition">
                         <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Day
                     </button>
                 </div>
-                <div class="space-y-3" id="timetable-slots-container">
-                    <!-- Populated via JavaScript -->
+                <div class="space-y-2.5" id="timetable-slots-container">
+                    <!-- Populated via JS -->
                 </div>
             </div>
         </div>
@@ -116,22 +106,24 @@
         <!-- TAB 2: STUDY PLANNER -->
         <div id="tab-planner" class="tab-content space-y-4">
             <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-4 text-white shadow-md">
-                <span class="bg-white/20 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">After School</span>
-                <h2 class="text-lg font-bold mt-2">1-Hour Daily Study Planner</h2>
-                <p class="text-xs text-emerald-100 mt-0.5">Focused revision slot to master all 11 subjects</p>
+                <span class="bg-white/20 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">After School</span>
+                <h2 class="text-lg font-bold mt-1">1-Hour Daily Study Timer</h2>
+                <p class="text-xs text-emerald-100">60-minute focused revision session after school hours</p>
             </div>
 
-            <!-- Study Timer Widget -->
+            <!-- Timer Card -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 text-center">
-                <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Today's Focus Session</div>
-                <div id="study-timer-display" class="text-4xl font-black text-slate-800 my-2">60:00</div>
-                <p id="study-subject-target" class="text-sm font-medium text-blue-600 mb-4">Target: Mathematics & Science Revision</p>
+                <div class="text-[11px] uppercase tracking-wider text-slate-400 font-bold mb-1">Today's Focus Session</div>
+                <div id="study-timer-display" class="text-5xl font-black text-slate-800 my-3 tracking-tight font-mono">60:00</div>
+                <p id="study-subject-target" class="text-xs font-semibold text-emerald-600 mb-4 bg-emerald-50 py-1.5 px-3 rounded-lg inline-block">
+                    Target: Master 11 MH Board Subjects
+                </p>
                 <div class="flex justify-center space-x-3">
-                    <button id="timer-start-btn" onclick="toggleStudyTimer()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-sm transition flex items-center space-x-2">
+                    <button id="timer-start-btn" onclick="toggleStudyTimer()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition flex items-center space-x-2 active:scale-95">
                         <i class="fa-solid fa-play" id="timer-icon"></i>
-                        <span id="timer-btn-text">Start Session</span>
+                        <span id="timer-btn-text">Start Timer</span>
                     </button>
-                    <button onclick="resetStudyTimer()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl font-semibold text-sm transition">
+                    <button onclick="resetStudyTimer()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl font-semibold text-sm transition active:scale-95">
                         Reset
                     </button>
                 </div>
@@ -141,67 +133,67 @@
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
                 <div class="flex justify-between items-center mb-3">
                     <h3 class="font-bold text-slate-800 text-sm flex items-center">
-                        <i class="fa-solid fa-book-open text-emerald-600 mr-2"></i>
-                        Daily Subject Checklist (11 Subjects)
+                        <i class="fa-solid fa-list-check text-emerald-600 mr-2"></i>
+                        Daily Revision Tracker (11 Subjects)
                     </h3>
                 </div>
-                <div class="space-y-2.5" id="study-checklist-container">
-                    <!-- Populated via JavaScript -->
+                <div class="space-y-2" id="study-checklist-container">
+                    <!-- Populated via JS -->
                 </div>
             </div>
         </div>
 
-        <!-- TAB 3: HOMEWORK & TRACKER -->
+        <!-- TAB 3: HOMEWORK -->
         <div id="tab-homework" class="tab-content space-y-4">
             <div class="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-2xl p-4 text-white shadow-md">
-                <span class="bg-white/20 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Assignments</span>
-                <h2 class="text-lg font-bold mt-2">Homework & Progress Tracker</h2>
-                <p class="text-xs text-purple-100 mt-0.5">Track your daily tasks and subject mastery</p>
+                <span class="bg-white/20 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Assignments</span>
+                <h2 class="text-lg font-bold mt-1">Homework Tracker</h2>
+                <p class="text-xs text-purple-100">Keep track of daily classwork & homework</p>
             </div>
 
-            <!-- Add Homework Form -->
+            <!-- Form Card -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
                 <h3 class="font-bold text-slate-800 text-sm mb-3 flex items-center">
-                    <i class="fa-solid fa-circle-plus text-purple-600 mr-2"></i> Add New Homework/Task
+                    <i class="fa-solid fa-circle-plus text-purple-600 mr-2"></i> Add New Homework
                 </h3>
                 <form id="homework-form" onsubmit="addHomework(event)" class="space-y-3">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Select Subject</label>
-                        <select id="hw-subject" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Subject</label>
+                        <select id="hw-subject" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-700 focus:outline-none focus:border-purple-500">
                             <!-- Populated via JS -->
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Task Description</label>
-                        <input type="text" id="hw-title" placeholder="e.g., Complete Chapter 3 Practice Set 3.1" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Homework Detail</label>
+                        <input type="text" id="hw-title" placeholder="e.g. Practice Set 3.1 Q1 to Q5" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:border-purple-500">
                     </div>
-                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 rounded-xl text-sm transition shadow-sm">
-                        Add Homework Task
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 active:scale-95 text-white font-semibold py-2.5 rounded-xl text-xs transition shadow-md">
+                        Save Homework Task
                     </button>
                 </form>
             </div>
 
-            <!-- Homework Task List -->
+            <!-- Homework List -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
                 <h3 class="font-bold text-slate-800 text-sm mb-3 flex items-center">
-                    <i class="fa-solid fa-list-check text-purple-600 mr-2"></i> Active Tasks
+                    <i class="fa-solid fa-tasks text-purple-600 mr-2"></i> Pending Tasks
                 </h3>
-                <div class="space-y-2.5" id="homework-list-container">
-                    <!-- Populated via JavaScript -->
+                <div class="space-y-2" id="homework-list-container">
+                    <!-- Populated via JS -->
                 </div>
             </div>
         </div>
 
-        <!-- TAB 4: SUBJECTS DIRECTORY -->
+        <!-- TAB 4: SUBJECTS -->
         <div id="tab-subjects" class="tab-content space-y-4">
             <div class="bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-4 text-white shadow-md">
-                <span class="bg-white/20 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Curriculum</span>
-                <h2 class="text-lg font-bold mt-2">All 11 Maharashtra Board Subjects</h2>
-                <p class="text-xs text-amber-100 mt-0.5">Quick reference guide and progress overview</p>
+                <span class="bg-white/20 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Curriculum</span>
+                <h2 class="text-lg font-bold mt-1">11 MH Board Subjects</h2>
+                <p class="text-xs text-amber-100">Subject-wise progress and overview</p>
             </div>
 
-            <div class="grid grid-cols-1 gap-3" id="subjects-grid-container">
-                <!-- Populated via JavaScript -->
+            <div class="grid grid-cols-1 gap-2.5" id="subjects-grid-container">
+                <!-- Populated via JS -->
             </div>
         </div>
 
@@ -214,11 +206,11 @@
                 <span class="text-[10px] font-semibold mt-1">Timetable</span>
             </button>
             <button onclick="switchTab('planner')" id="nav-planner" class="flex flex-col items-center justify-center w-16 py-1 text-slate-400 hover:text-slate-600 transition">
-                <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+                <i class="fa-solid fa-clock text-lg"></i>
                 <span class="text-[10px] font-semibold mt-1">Planner</span>
             </button>
             <button onclick="switchTab('homework')" id="nav-homework" class="flex flex-col items-center justify-center w-16 py-1 text-slate-400 hover:text-slate-600 transition">
-                <i class="fa-solid fa-list-check text-lg"></i>
+                <i class="fa-solid fa-pen-ruler text-lg"></i>
                 <span class="text-[10px] font-semibold mt-1">Homework</span>
             </button>
             <button onclick="switchTab('subjects')" id="nav-subjects" class="flex flex-col items-center justify-center w-16 py-1 text-slate-400 hover:text-slate-600 transition">
@@ -228,72 +220,72 @@
         </div>
     </nav>
 
-    <!-- MODAL: Edit Timetable Day -->
     <div id="edit-timetable-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-slate-200 space-y-4 max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center">
-                <h3 class="font-bold text-slate-800 text-base" id="edit-modal-title">Edit Timetable</h3>
-                <button onclick="closeEditTimetableModal()" class="text-slate-400 hover:text-slate-600 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
+                <h3 class="font-bold text-slate-800 text-base">Edit Timetable Slot</h3>
+                <button onclick="closeEditTimetableModal()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <p class="text-xs text-slate-500">Configure periods for <span id="modal-day-name" class="font-semibold text-slate-700"></span></p>
-            <div id="modal-periods-list" class="space-y-3">
-                <!-- Populated via JavaScript -->
+            <p class="text-xs text-slate-500">Configure periods for <span id="modal-day-name" class="font-bold text-blue-600"></span></p>
+            <div id="modal-periods-list" class="space-y-2.5">
+                <!-- Populated via JS -->
             </div>
             <div class="flex space-x-2 pt-2">
-                <button onclick="closeEditTimetableModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-sm transition">Cancel</button>
-                <button onclick="saveTimetableEdits()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-sm transition shadow-sm">Save Changes</button>
+                <button onclick="closeEditTimetableModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-xs transition">Cancel</button>
+                <button onclick="saveTimetableEdits()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-xs transition shadow-sm">Save Changes</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL: Publish / APK Guide -->
     <div id="publish-guide-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-2xl border border-slate-200 space-y-4 max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center">
                 <h3 class="font-bold text-slate-800 text-base flex items-center">
-                    <i class="fa-solid fa-rocket text-blue-600 mr-2"></i> Publish & APK Guide
+                    <i class="fa-solid fa-rocket text-blue-600 mr-2"></i> How to Convert to Android APK
                 </h3>
-                <button onclick="closePublishGuide()" class="text-slate-400 hover:text-slate-600 text-lg">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="closePublishGuide()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
             <div class="space-y-3 text-xs text-slate-600 leading-relaxed">
                 <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
                     <h4 class="font-bold text-blue-900 mb-1">Step 1: Host on GitHub Pages</h4>
-                    <p class="text-blue-800">1. Save this complete code as <code class="bg-white px-1 py-0.5 rounded border border-blue-200 font-mono">index.html</code>.<br>2. Upload to a new GitHub repository.<br>3. Go to repository <b>Settings > Pages</b> and set source to main branch. Your web app link is ready!</p>
+                    <p class="text-blue-800">1. Save this file as <code class="bg-white px-1 py-0.5 rounded font-mono border">index.html</code>.<br>2. Upload it to a new repository on GitHub.<br>3. Go to <b>Settings > Pages</b>, select main branch, and click Save. Your link is live!</p>
                 </div>
                 <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100">
-                    <h4 class="font-bold text-emerald-900 mb-1">Step 2: Convert to Android APK</h4>
-                    <p class="text-emerald-800">You can easily convert your hosted GitHub Pages link into a native Android APK using free online wrappers or tools:<br>• <b>PWABuilder.com</b> (Official Microsoft PWA tool - paste URL, generate Android package)<br>• <b>AppYet</b> or <b>WebIntoApp</b> (Instant APK generators)</p>
+                    <h4 class="font-bold text-emerald-900 mb-1">Step 2: Generate APK</h4>
+                    <p class="text-emerald-800">Paste your live GitHub Pages website URL into any free website-to-APK converter:<br>• <b>PWABuilder.com</b> (Recommended)<br>• <b>WebIntoApp.com</b><br>• <b>AppYet.com</b></p>
                 </div>
             </div>
-            <button onclick="closePublishGuide()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-sm transition shadow-sm">Got It!</button>
+            <button onclick="closePublishGuide()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-xs transition shadow-sm">Got It!</button>
         </div>
     </div>
 
-    <!-- CUSTOM NOTIFICATION TOAST -->
+    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center space-x-2">
         <i class="fa-solid fa-circle-check text-emerald-400"></i>
-        <span id="toast-msg">Action successful</span>
+        <span id="toast-msg">Updated</span>
     </div>
 
     <script>
+        // 11 Maharashtra State Board Class 9 Subjects
         const SUBJECTS = [
             { id: 'english', name: 'English', code: 'EN', color: 'bg-blue-500', text: 'text-blue-600', bgLight: 'bg-blue-50', icon: 'fa-language' },
             { id: 'hindi', name: 'Hindi', code: 'HI', color: 'bg-rose-500', text: 'text-rose-600', bgLight: 'bg-rose-50', icon: 'fa-book' },
             { id: 'urdu', name: 'Urdu', code: 'UR', color: 'bg-purple-500', text: 'text-purple-600', bgLight: 'bg-purple-50', icon: 'fa-feather' },
-            { id: 'marathi', name: 'Marathi', code: 'MR', color: 'bg-amber-500', text: 'text-amber-600', bgLight: 'bg-amber-50', icon: 'fa-book-open-reader' },
+            { id: 'marathi', name: 'Marathi', code: 'MR', color: 'bg-amber-500', text: 'text-amber-600', bgLight: 'bg-amber-50', icon: 'fa-book-open' },
             { id: 'math1', name: 'Mathematics 1 (Algebra)', code: 'M1', color: 'bg-indigo-500', text: 'text-indigo-600', bgLight: 'bg-indigo-50', icon: 'fa-calculator' },
             { id: 'math2', name: 'Mathematics 2 (Geometry)', code: 'M2', color: 'bg-violet-500', text: 'text-violet-600', bgLight: 'bg-violet-50', icon: 'fa-shapes' },
             { id: 'sci1', name: 'Science 1', code: 'S1', color: 'bg-emerald-500', text: 'text-emerald-600', bgLight: 'bg-emerald-50', icon: 'fa-atom' },
             { id: 'sci2', name: 'Science 2', code: 'S2', color: 'bg-teal-500', text: 'text-teal-600', bgLight: 'bg-teal-50', icon: 'fa-dna' },
-            { id: 'history', name: 'History & Political Science', code: 'HS', color: 'bg-orange-500', text: 'text-orange-600', bgLight: 'bg-orange-50', icon: 'fa-landmark' },
+            { id: 'history', name: 'History', code: 'HS', color: 'bg-orange-500', text: 'text-orange-600', bgLight: 'bg-orange-50', icon: 'fa-landmark' },
             { id: 'geography', name: 'Geography', code: 'GE', color: 'bg-cyan-500', text: 'text-cyan-600', bgLight: 'bg-cyan-50', icon: 'fa-earth-americas' },
             { id: 'civics', name: 'Civics', code: 'CV', color: 'bg-sky-500', text: 'text-sky-600', bgLight: 'bg-sky-50', icon: 'fa-scale-balanced' }
         ];
 
+        // Default Timetable Data (Monday to Saturday, 7:00 AM - 12:30 PM)
         const DEFAULT_TIMETABLE = {
             Monday: [
                 { time: '07:00 AM - 07:45 AM', subject: 'marathi', type: 'lecture' },
@@ -318,4 +310,7 @@
             Wednesday: [
                 { time: '07:00 AM - 07:45 AM', subject: 'sci1', type: 'lecture' },
                 { time: '07:45 AM - 08:30 AM', subject: 'history', type: 'lecture' },
-                { time: '08:30 AM - 09:
+                { time: '08:30 AM - 09:15 AM', subject: 'math2', type: 'lecture' },
+                { time: '09:15 AM - 09:45 AM', subject: 'BREAK', type: 'break', title: 'Recess Break' },
+                { time: '09:45 AM - 10:30 AM', subject: 'hindi', type: 'lecture' },
+                { time: '10:30 AM - 11:15 AM', subject: 'english', type: 'lectur
