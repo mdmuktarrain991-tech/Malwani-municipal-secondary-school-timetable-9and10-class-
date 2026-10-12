@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 9 Timetable</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172554}
+header{background:#1746a2;color:white;padding:22px 15px;text-align:center}
+header h1{margin:0 0 8px;font-size:25px}
+header p{margin:0}
+main{max-width:900px;margin:auto;padding:15px}
+.card{background:white;padding:16px;border-radius:14px;margin:14px 0;box-shadow:0 3px 12px #0001}
+h2{font-size:19px;color:#1746a2;margin-top:0}
+select,button{padding:11px;border-radius:8px;border:1px solid #cbd5e1;font-size:15px}
+button{background:#1746a2;color:white;border:0;cursor:pointer}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.controls select{flex:1;min-width:140px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px 8px;text-align:left;border-bottom:1px solid #e2e8f0}
+th{background:#e8efff}
+.badge{display:inline-block;background:#dbeafe;padding:7px 10px;border-radius:20px;margin:3px}
+footer{text-align:center;color:#64748b;padding:20px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 Class 9 Timetable</h1>
+<p>Weekly Study Planner</p>
+<p>Maharashtra State Board</p>
+</header>
+<main>
+<div class="card">
+<h2>🏫 School Details</h2>
+<p><b>School Time:</b> 7:00 AM – 12:30 PM</p>
+<p><b>Daily Self-study:</b> 1 hour</p>
+<p><b>Class:</b> 9th Standard</p>
+</div>
+
+<div class="card">
+<h2>📅 Weekly Timetable</h2>
+<div class="controls">
+<select id="day" onchange="showDay()">
+<option>Monday</option><option>Tuesday</option>
+<option>Wednesday</option><option>Thursday</option>
+<option>Friday</option><option>Saturday</option>
+</select>
+<button onclick="showWeek()">Show Full Week</button>
+</div>
+<div id="schedule"></div>
+</div>
+
+<div class="card">
+<h2>📖 All Subjects</h2>
+<div id="subjects"></div>
+</div>
+
+<div class="card">
+<h2>✍️ Daily Study Planner</h2>
+<p>School ke baad apni padhai ka record rakho.</p>
+<div id="tasks"></div>
+<p id="progress">0 of 3 tasks completed</p>
+<button onclick="resetTasks()">Reset Tasks</button>
+</div>
+</main>
+<footer>Class 9 Timetable App | Study well, achieve more!</footer>
+
+<script>
+const subjects=[
+"English","Hindi","Urdu","Mathematics 1",
+"Mathematics 2","Marathi","Science 1",
+"Science 2","History","Geography","Civics"
+];
+
+const days={
+Monday:["English","Mathematics 1","Marathi","Science 1","History"],
+Tuesday:["Hindi","Mathematics 2","English","Science 2","Geography"],
+Wednesday:["Urdu","Mathematics 1","Marathi","Civics","Science 1"],
+Thursday:["English","Mathematics 2","Hindi","History","Science 2"],
+Friday:["Marathi","Mathematics 1","Urdu","Geography","Civics"],
+Saturday:["Hindi","Mathematics 2","English","Science 1","Revision"]
+};
+
+const times=[
+"7:00–8:00 AM","8:00–9:00 AM",
+"9:00–10:00 AM","10:00–11:00 AM",
+"11:00 AM–12:30 PM"
+];
+
+function makeTable(day){
+let html="<h3>"+day+"</h3><table><tr><th>Time</th><th>Subject</th></tr>";
+days[day].forEach((s,i)=>{
+html+="<tr><td>"+times[i]+"</td><td>"+s+"</td></tr>";
+});
+return html+"</table>";
+}
+
+function showDay(){
+document.getElementById("schedule").innerHTML=
+makeTable(document.getElementById("day").value);
+}
+
+function showWeek(){
+let html="";
+Object.keys(days).forEach(d=>html+=makeTable(d));
+document.getElementById("schedule").innerHTML=html;
+}
+
+document.getElementById("subjects").innerHTML=
+subjects.map(s=>'<span class="badge">'+s+'</span>').join("");
+
+const taskNames=[
+"Revise today's lessons",
+"Complete homework",
+"Practise Mathematics"
+];
+
+function loadTasks(){
+document.getElementById("tasks").innerHTML=
+taskNames.map((t,i)=>
+'<p><label><input type="checkbox" onchange="updateProgress()"> '+t+'</label></p>'
+).join("");
+updateProgress();
+}
+
+function updateProgress(){
+const boxes=document.querySelectorAll('#tasks input');
+let count=0;
+boxes.forEach(b=>{if(b.checked)count++});
+document.getElementById("progress").textContent=
+count+" of "+boxes.length+" tasks completed";
+}
+
+function resetTasks(){
+document.querySelectorAll('#tasks input').forEach(b=>b.checked=false);
+updateProgress();
+}
+
+showDay();
+loadTasks();
+</script>
+</body>
+  </html>
+  
